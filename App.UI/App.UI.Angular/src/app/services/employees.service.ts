@@ -29,4 +29,9 @@ export class EmployeesService {
     }
     return this.http.post<Employee>(this.baseApiUrl + '/api/employees', dataWillBeSent);
   }
+
+  getEmployee(id : string) : Observable<Employee>
+  {
+     return this.http.get<Employee>(this.baseApiUrl + ' /api/employees/' + id );
+  }
 }
