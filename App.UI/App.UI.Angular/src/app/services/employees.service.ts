@@ -17,4 +17,16 @@ export class EmployeesService {
   {
      return this.http.get<Employee[]>(this.baseApiUrl + '/api/employees')
   }
+  addEmployee(addEmployeeRequest: Employee) : Observable<Employee>
+  {
+    // addEmployeeRequest.id ='0000000-0000-0000-0000-000000000000';
+    const dataWillBeSent: Partial<Employee> = {
+      email: addEmployeeRequest.email,
+      department: addEmployeeRequest.department,
+      name: addEmployeeRequest.name,
+      phone: addEmployeeRequest.phone,
+      salary: addEmployeeRequest.salary
+    }
+    return this.http.post<Employee>(this.baseApiUrl + '/api/employees', dataWillBeSent);
+  }
 }
